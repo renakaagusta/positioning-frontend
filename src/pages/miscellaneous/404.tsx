@@ -3,7 +3,7 @@ import { Card, CardBody } from '@paljs/ui/Card';
 import { ButtonLink } from '@paljs/ui/Button';
 import styled from 'styled-components';
 
-import Layout from 'Layouts';
+import Layout from 'layouts';
 import { useRouter } from 'next/router';
 
 const ErrorStyle = styled.div`

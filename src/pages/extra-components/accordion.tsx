@@ -4,7 +4,7 @@ import { Card, CardBody } from '@paljs/ui/Card';
 import Row from '@paljs/ui/Row';
 import Col from '@paljs/ui/Col';
 import React, { useRef } from 'react';
-import Layout from 'Layouts';
+import Layout from 'layouts';
 
 const Accordions = () => {
   const accordionRef = useRef<AccordionRefObject>(null);

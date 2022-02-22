@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import Auth from 'components/Auth';
-import Layout from 'Layouts';
+import Layout from 'layouts';
 
 export default function Login() {
   return (

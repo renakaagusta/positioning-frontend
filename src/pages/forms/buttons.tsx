@@ -4,7 +4,7 @@ import { Button, ButtonLink } from '@paljs/ui/Button';
 import Col from '@paljs/ui/Col';
 import Row from '@paljs/ui/Row';
 import React from 'react';
-import Layout from 'Layouts';
+import Layout from 'layouts';
 import { useRouter } from 'next/router';
 
 const style = { marginBottom: '1.5rem' };

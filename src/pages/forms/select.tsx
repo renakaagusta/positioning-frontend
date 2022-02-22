@@ -4,7 +4,7 @@ import Col from '@paljs/ui/Col';
 import Row from '@paljs/ui/Row';
 import React from 'react';
 import styled from 'styled-components';
-import Layout from 'Layouts';
+import Layout from 'layouts';
 
 export const SelectStyled = styled(Select)`
   margin-bottom: 1rem;

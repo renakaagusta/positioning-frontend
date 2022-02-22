@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 import Auth from 'components/Auth';
-import Layout from 'Layouts';
+import Layout from 'layouts';
 
 const Input = styled(InputGroup)`
   margin-bottom: 2rem;

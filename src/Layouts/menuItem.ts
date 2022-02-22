@@ -37,8 +37,8 @@ const items: MenuItemType[] = [
     icon: { name: 'pin-outline' },
     children: [
       {
-        title: 'Lokasi',
-        link: { href: '/dijkstra/location' },
+        title: 'Point',
+        link: { href: '/dijkstra/point' },
       },
       {
         title: 'Rute',

@@ -3,7 +3,7 @@ import { Button } from '@paljs/ui/Button';
 import { InputGroup } from '@paljs/ui/Input';
 import Link from 'next/link';
 
-import Layout from 'Layouts';
+import Layout from 'layouts';
 import Auth, { Group } from 'components/Auth';
 
 export default function RequestPassword() {

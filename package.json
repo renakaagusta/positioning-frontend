@@ -17,6 +17,8 @@
     "@tinymce/tinymce-react": "3.12.6",
     "@types/mui-datatables": "^3.7.8",
     "babel-plugin-styled-components": "^1.13.2",
+    "babel-preset-next": "^1.4.0",
+    "firebase": "^9.6.7",
     "mui-datatables": "^4.1.2",
     "next": "^11.1.2",
     "react": "17.0.2",

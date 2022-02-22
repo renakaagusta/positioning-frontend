@@ -4,7 +4,7 @@ import User from '@paljs/ui/User';
 import Row from '@paljs/ui/Row';
 import Col from '@paljs/ui/Col';
 import React from 'react';
-import Layout from 'Layouts';
+import Layout from 'layouts';
 
 const ListPage = () => {
   const userList = [

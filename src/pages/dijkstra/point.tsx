@@ -5,46 +5,63 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import React, { useEffect, useState } from 'react';
-import { getDocs, query, where } from 'firebase/firestore';
-import { usersCol } from 'constants/firebase';
-import { UserInterface, UserRole } from 'model/user';
+import { getDocs, query } from 'firebase/firestore';
+import { pointsCol } from 'constants/firebase';
+import { PointInterface } from 'model/point';
 
-const Admins = () => {
-  const [adminList, setAdminList] = useState<Array<UserInterface>>([]);
+interface PointDataTableInterface {
+  id: string;
+  label: string;
+  latitude: number;
+  longitude: number;
+}
+
+const Points = () => {
+  const [pointDataTable, setPointDataTable] = useState<Array<PointDataTableInterface>>([]);
   const [isLoading, setLoadingStatus] = useState<boolean>(false);
 
   useEffect(() => {
-    async function getAdminList() {
+    async function getPointList() {
       setLoadingStatus(true);
 
-      const q = query(usersCol, where('role', '==', UserRole.Admin));
+      const q = query(pointsCol);
       const querySnapshot = await getDocs(q);
-      const adminListSnapshot: Array<UserInterface> = [];
-      querySnapshot.docs.map((admin) => {
-        adminListSnapshot.push({
-          id: admin.id,
-          ...admin.data(),
+      const pointDataTableSnapshot: Array<PointDataTableInterface> = [];
+      querySnapshot.docs.map((point) => {
+        pointDataTableSnapshot.push({
+          id: point.id,
+          label: point.data().properties.text,
+          latitude: point.data().geometry.coordinates[1],
+          longitude: point.data().geometry.coordinates[0],
         });
       });
-      setAdminList(adminListSnapshot);
+      setPointDataTable(pointDataTableSnapshot);
       setLoadingStatus(false);
     }
 
-    getAdminList();
+    getPointList();
   }, []);
 
   const columns = [
     {
-      name: 'name',
-      label: 'Nama',
+      name: 'label',
+      label: 'Titik',
       options: {
         filter: true,
         sort: true,
       },
     },
     {
-      name: 'email',
-      label: 'Email',
+      name: 'latitude',
+      label: 'Latitude',
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: 'longitude',
+      label: 'Longitude',
       options: {
         filter: true,
         sort: false,
@@ -96,7 +113,7 @@ const Admins = () => {
   } as Partial<any>;
 
   return (
-    <Layout title="Admins">
+    <Layout title="Points">
       {isLoading && (
         <Col breakPoint={{ xs: 12 }}>
           <Card style={{ position: 'relative' }}>
@@ -105,12 +122,12 @@ const Admins = () => {
           </Card>
         </Col>
       )}
-      {!isLoading && <MUIDataTable title={'Daftar Admin'} data={adminList} columns={columns} options={options} />}
+      {!isLoading && <MUIDataTable title={'Daftar Titik'} data={pointDataTable} columns={columns} options={options} />}
     </Layout>
   );
 };
 
-export default Admins;
+export default Points;
 
 class CustomToolbar extends React.Component {
   handleClick = () => {

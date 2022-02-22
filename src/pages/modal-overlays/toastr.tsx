@@ -8,7 +8,7 @@ import { Checkbox } from '@paljs/ui/Checkbox';
 import { InputGroup } from '@paljs/ui/Input';
 import Select from '@paljs/ui/Select';
 import styled from 'styled-components';
-import Layout from 'Layouts';
+import Layout from 'layouts';
 
 const SelectStyled = styled(Select)`
   margin-bottom: 1rem;

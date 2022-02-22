@@ -9,28 +9,28 @@ import { getDocs, query, where } from 'firebase/firestore';
 import { usersCol } from 'constants/firebase';
 import { UserInterface, UserRole } from 'model/user';
 
-const Admins = () => {
-  const [adminList, setAdminList] = useState<Array<UserInterface>>([]);
+const Riders = () => {
+  const [riderList, setRiderList] = useState<Array<UserInterface>>([]);
   const [isLoading, setLoadingStatus] = useState<boolean>(false);
 
   useEffect(() => {
-    async function getAdminList() {
+    async function getRiderList() {
       setLoadingStatus(true);
 
-      const q = query(usersCol, where('role', '==', UserRole.Admin));
+      const q = query(usersCol, where('role', '==', UserRole.Rider));
       const querySnapshot = await getDocs(q);
-      const adminListSnapshot: Array<UserInterface> = [];
-      querySnapshot.docs.map((admin) => {
-        adminListSnapshot.push({
-          id: admin.id,
-          ...admin.data(),
+      const riderListSnapshot: Array<UserInterface> = [];
+      querySnapshot.docs.map((rider) => {
+        riderListSnapshot.push({
+          id: rider.id,
+          ...rider.data(),
         });
       });
-      setAdminList(adminListSnapshot);
+      setRiderList(riderListSnapshot);
       setLoadingStatus(false);
     }
 
-    getAdminList();
+    getRiderList();
   }, []);
 
   const columns = [
@@ -96,7 +96,7 @@ const Admins = () => {
   } as Partial<any>;
 
   return (
-    <Layout title="Admins">
+    <Layout title="Riders">
       {isLoading && (
         <Col breakPoint={{ xs: 12 }}>
           <Card style={{ position: 'relative' }}>
@@ -105,12 +105,14 @@ const Admins = () => {
           </Card>
         </Col>
       )}
-      {!isLoading && <MUIDataTable title={'Daftar Admin'} data={adminList} columns={columns} options={options} />}
+      {!isLoading && (
+        <MUIDataTable title={'Daftar Kantor Polisi'} data={riderList} columns={columns} options={options} />
+      )}
     </Layout>
   );
 };
 
-export default Admins;
+export default Riders;
 
 class CustomToolbar extends React.Component {
   handleClick = () => {
