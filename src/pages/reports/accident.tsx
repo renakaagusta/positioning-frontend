@@ -5,63 +5,46 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import React, { useEffect, useState } from 'react';
-import { getDocs, query } from 'firebase/firestore';
-import { pointsCol } from 'constants/firebase';
-import { PointInterface } from 'model/point';
+import { getDocs, query, where } from 'firebase/firestore';
+import { reportsCol } from 'constants/firebase';
+import { ReportInterface, ReportCategory } from 'model/report';
 
-interface PointDataTableInterface {
-  id: string;
-  label: string;
-  latitude: number;
-  longitude: number;
-}
-
-const Points = () => {
-  const [pointDataTable, setPointDataTable] = useState<Array<PointDataTableInterface>>([]);
+const TrafficJams = () => {
+  const [TrafficJamList, setTrafficJamList] = useState<Array<ReportInterface>>([]);
   const [isLoading, setLoadingStatus] = useState<boolean>(false);
 
   useEffect(() => {
-    async function getPointList() {
+    async function getTrafficJamList() {
       setLoadingStatus(true);
 
-      const q = query(pointsCol);
+      const q = query(reportsCol, where('category', '==', ReportCategory.TrafficJam));
       const querySnapshot = await getDocs(q);
-      const pointDataTableSnapshot: Array<PointDataTableInterface> = [];
-      querySnapshot.docs.map((point) => {
-        pointDataTableSnapshot.push({
-          id: point.id,
-          label: point.data().properties.text,
-          latitude: point.data().geometry.coordinates[1],
-          longitude: point.data().geometry.coordinates[0],
+      const TrafficJamListSnapshot: Array<ReportInterface> = [];
+      querySnapshot.docs.map((TrafficJam) => {
+        TrafficJamListSnapshot.push({
+          id: TrafficJam.id,
+          ...TrafficJam.data(),
         });
       });
-      setPointDataTable(pointDataTableSnapshot);
+      setTrafficJamList(TrafficJamListSnapshot);
       setLoadingStatus(false);
     }
 
-    getPointList();
+    getTrafficJamList();
   }, []);
 
   const columns = [
     {
-      name: 'label',
-      label: 'Titik',
+      name: 'title',
+      label: 'Judul laporan',
       options: {
         filter: true,
         sort: true,
       },
     },
     {
-      name: 'latitude',
-      label: 'Latitude',
-      options: {
-        filter: true,
-        sort: false,
-      },
-    },
-    {
-      name: 'longitude',
-      label: 'Longitude',
+      name: 'description',
+      label: 'Deskripsi',
       options: {
         filter: true,
         sort: false,
@@ -113,7 +96,7 @@ const Points = () => {
   } as Partial<any>;
 
   return (
-    <Layout title="Points">
+    <Layout title="TrafficJams">
       {isLoading && (
         <Col breakPoint={{ xs: 12 }}>
           <Card style={{ position: 'relative' }}>
@@ -122,12 +105,14 @@ const Points = () => {
           </Card>
         </Col>
       )}
-      {!isLoading && <MUIDataTable title={'Daftar Titik'} data={pointDataTable} columns={columns} options={options} />}
+      {!isLoading && (
+        <MUIDataTable title={'Daftar TrafficJam'} data={TrafficJamList} columns={columns} options={options} />
+      )}
     </Layout>
   );
 };
 
-export default Points;
+export default TrafficJams;
 
 class CustomToolbar extends React.Component {
   handleClick = () => {

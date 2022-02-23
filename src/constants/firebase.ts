@@ -1,6 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, CollectionReference, DocumentData } from 'firebase/firestore';
-import { PointInterface } from 'model/points';
+import { PointCollectionInterface } from 'model/pointCollection';
+import { ReportInterface } from 'model/report';
+import { RouteCollectionInterface } from 'model/routeCollection';
 import { UserInterface } from 'model/user';
 
 const firebaseConfig = {
@@ -21,5 +23,7 @@ const createCollection = <T = DocumentData>(collectionName: string) => {
   return collection(firestore, collectionName) as CollectionReference<T>;
 };
 
-export const usersCol = createCollection<UserInterface>('users');
-export const pointsCol = createCollection<PointInterface>('points');
+export const usersCol = createCollection<UserInterface>(`users`);
+export const reportsCol = createCollection<ReportInterface>(`reports`);
+export const pointCollectionCol = createCollection<PointCollectionInterface>(`points`);
+export const routeCollectionCol = createCollection<RouteCollectionInterface>(`routes`);

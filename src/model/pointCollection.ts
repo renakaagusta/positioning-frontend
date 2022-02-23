@@ -13,3 +13,9 @@ export interface PointInterface {
   properties: PropertyInterface;
   type: string;
 }
+
+export interface PointCollectionInterface {
+  id?: string;
+  type: string;
+  data: Array<PointInterface>;
+}

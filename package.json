@@ -19,6 +19,7 @@
     "babel-plugin-styled-components": "^1.13.2",
     "babel-preset-next": "^1.4.0",
     "firebase": "^9.6.7",
+    "google-maps-react": "^2.0.6",
     "mui-datatables": "^4.1.2",
     "next": "^11.1.2",
     "react": "17.0.2",

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import Layout from 'layouts';
 
-const ErrorStyle = styled.div`
+export const ErrorStyle = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;

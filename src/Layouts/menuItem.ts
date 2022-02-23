@@ -33,16 +33,34 @@ const items: MenuItemType[] = [
     ],
   },
   {
+    title: 'Laporan',
+    icon: { name: 'archive-outline' },
+    children: [
+      {
+        title: 'Kemacetan',
+        link: { href: '/reports/traffic-jam' },
+      },
+      {
+        title: 'Kecelakaan',
+        link: { href: '/reports/accident' },
+      },
+    ],
+  },
+  {
     title: 'Dijkstra',
     icon: { name: 'pin-outline' },
     children: [
       {
-        title: 'Point',
-        link: { href: '/dijkstra/point' },
+        title: 'Simulasi',
+        link: { href: '/dijkstra/simulation' },
+      },
+      {
+        title: 'Titik',
+        link: { href: '/dijkstra/point-collection' },
       },
       {
         title: 'Rute',
-        link: { href: '/dijkstra/route' },
+        link: { href: '/dijkstra/route-collection' },
       },
     ],
   },
