@@ -3,13 +3,13 @@ import { InputGroup } from '@paljs/ui/Input';
 import React from 'react';
 import Link from 'next/link';
 
-import Auth from 'components/Auth';
+import Form from 'components/Form';
 import Layout from 'layouts';
 
 export default function Login() {
   return (
     <Layout title="Login">
-      <Auth title="Login" subTitle="Positioning">
+      <Form title="Login" subTitle="Positioning" position="center">
         <form>
           <InputGroup fullWidth>
             <input type="email" placeholder="Email Address" />
@@ -28,7 +28,7 @@ export default function Login() {
             <a>Daftar</a>
           </Link>
         </p>
-      </Auth>
+      </Form>
     </Layout>
   );
 }

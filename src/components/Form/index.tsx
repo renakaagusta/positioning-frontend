@@ -3,22 +3,22 @@ import { Card, CardBody } from '@paljs/ui/Card';
 import { breakpointDown } from '@paljs/ui/breakpoints';
 import React from 'react';
 
-const AuthStyle = styled.div<{ subTitle?: string }>`
+const FormStyle = styled.div<{ subTitle?: string; position?: string }>`
   margin: auto;
   display: block;
   width: 100%;
-  max-width: 35rem;
+  max-width: 60rem;
   a {
     font-weight: 600;
   }
   & > h1 {
     margin-bottom: ${({ subTitle }) => (subTitle ? '0.75' : '2')}rem;
     margin-top: 0;
-    text-align: center;
+    text-align: ${({ position }) => position};
   }
   & > p {
     margin-bottom: 2rem;
-    text-align: center;
+    text-align: ${({ position }) => position};
   }
   form {
     width: 100%;
@@ -34,7 +34,7 @@ export const Group = styled.div`
   align-items: center;
 `;
 
-const CardAuth = styled(Card)`
+const CardForm = styled(Card)`
   margin-bottom: 0;
   height: calc(100vh - 5rem);
   ${breakpointDown('sm')`
@@ -44,21 +44,22 @@ const CardAuth = styled(Card)`
     display: flex;
   }
 `;
-interface AuthProps {
+interface FormProps {
   title: string;
   subTitle?: string;
+  position?: string;
 }
-const Auth: React.FC<AuthProps> = ({ subTitle, title, children }) => {
+const Form: React.FC<FormProps> = ({ subTitle, title, position, children }) => {
   return (
-    <CardAuth>
+    <CardForm>
       <CardBody>
-        <AuthStyle subTitle={subTitle}>
+        <FormStyle subTitle={subTitle} position={position}>
           <h1>{title}</h1>
           {subTitle && <p>{subTitle}</p>}
           {children}
-        </AuthStyle>
+        </FormStyle>
       </CardBody>
-    </CardAuth>
+    </CardForm>
   );
 };
-export default Auth;
+export default Form;
