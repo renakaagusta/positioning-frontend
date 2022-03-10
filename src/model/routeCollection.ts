@@ -7,5 +7,5 @@ export interface RouteInterface {
 export interface RouteCollectionInterface {
   id?: string;
   type: string;
-  data: Array<RouteInterface>;
+  routes: Array<RouteInterface>;
 }
