@@ -47,7 +47,7 @@ const items: MenuItemType[] = [
     ],
   },
   {
-    title: 'Dijkstra',
+    title: 'Aktivitas',
     icon: { name: 'pin-outline' },
     children: [
       {
