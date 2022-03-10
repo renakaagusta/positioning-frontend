@@ -52,15 +52,15 @@ const items: MenuItemType[] = [
     children: [
       {
         title: 'Simulasi',
-        link: { href: '/dijkstra/simulation' },
+        link: { href: '/activity/simulation' },
       },
       {
         title: 'Titik',
-        link: { href: '/dijkstra/point-collection' },
+        link: { href: '/activity/point-collection' },
       },
       {
         title: 'Rute',
-        link: { href: '/dijkstra/route-collection' },
+        link: { href: '/activity/route-collection' },
       },
     ],
   },
