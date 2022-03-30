@@ -48,9 +48,6 @@ const PointCollections = () => {
       setLoadingStatus(false);
     }
 
-    console.log('point');
-    console.log(pointCollectionList);
-
     getPointCollectionList();
   }, [reloadData]);
 

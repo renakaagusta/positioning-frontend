@@ -48,9 +48,6 @@ const RouteCollections = () => {
       setLoadingStatus(false);
     }
 
-    console.log('route');
-    console.log(routeCollectionList);
-
     getRouteCollectionList();
   }, [reloadData]);
 

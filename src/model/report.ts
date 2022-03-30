@@ -11,6 +11,15 @@ export enum ReportStatus {
   Rejected = 'Rejected',
 }
 
+export enum ReportType {
+  Simulation = 'Simulation',
+  Real = 'Real',
+}
+export interface PositionInterface {
+  label?: string;
+  lat: number;
+  lng: number;
+}
 export interface ReportInterface {
   id?: string;
   rider: string;
@@ -21,6 +30,8 @@ export interface ReportInterface {
   location?: LocationInterface;
   category: ReportCategory;
   status: ReportStatus;
+  routes?: Array<PositionInterface>;
+  type: ReportType;
   rejectedBy?: Array<string>;
   createdAt: Date;
 }
