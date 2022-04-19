@@ -23,6 +23,7 @@ export default function Login() {
     confirmPassword: '',
     latitude: 0,
     longitude: 0,
+    phoneNumber: '',
   });
   const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false);
 
@@ -34,6 +35,7 @@ export default function Login() {
     confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Password must match'),
     latitude: Yup.string().required('Latitude is required'),
     longitude: Yup.string().required('Email is required'),
+    phoneNumber: Yup.string(),
   });
 
   useEffect(() => {
@@ -66,6 +68,7 @@ export default function Login() {
         confirmPassword: '',
         latitude: hospital.meta?.location.static.latitude ?? 0,
         longitude: hospital.meta?.location.static.longitude ?? 0,
+        phoneNumber: hospital.meta?.phoneNumber ?? '-',
       });
     }
   }, [hospital]);
@@ -81,6 +84,7 @@ export default function Login() {
     form.append('password', hospitalForm.password);
     form.append('latitude', hospitalForm.latitude.toString());
     form.append('longitude', hospitalForm.longitude.toString());
+    form.append('phoneNumber', hospitalForm.phoneNumber ?? '');
 
     const fetchInitOpt: RequestInit = {
       method: 'PUT',
@@ -216,6 +220,20 @@ export default function Login() {
                   />
                 </InputGroup>
                 <p style={{ color: 'red' }}>{errors.longitude}</p>
+              </div>
+              <div style={{ marginBottom: 20 }}>
+                <label htmlFor="phoneNumber">Nomor HP</label>
+                <InputGroup fullWidth>
+                  <input
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    type="number"
+                    placeholder="Nomor HP"
+                    value={values.phoneNumber}
+                    onChange={handleChange}
+                  />
+                </InputGroup>
+                <p style={{ color: 'red' }}>{errors.phoneNumber}</p>
               </div>
               <Button
                 status="Success"

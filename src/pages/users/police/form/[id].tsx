@@ -23,6 +23,7 @@ export default function Login() {
     confirmPassword: '',
     latitude: 0,
     longitude: 0,
+    phoneNumber: '',
   });
   const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false);
 
@@ -66,6 +67,7 @@ export default function Login() {
         confirmPassword: '',
         latitude: police.meta?.location.static.latitude ?? 0,
         longitude: police.meta?.location.static.longitude ?? 0,
+        phoneNumber: police.meta?.phoneNumber,
       });
     }
   }, [police]);
@@ -81,6 +83,7 @@ export default function Login() {
     form.append('password', policeForm.password);
     form.append('latitude', policeForm.latitude.toString());
     form.append('longitude', policeForm.longitude.toString());
+    form.append('phoneNumber', policeForm.phoneNumber ?? '');
 
     const fetchInitOpt: RequestInit = {
       method: 'PUT',
@@ -216,6 +219,20 @@ export default function Login() {
                   />
                 </InputGroup>
                 <p style={{ color: 'red' }}>{errors.longitude}</p>
+              </div>
+              <div style={{ marginBottom: 20 }}>
+                <label htmlFor="phoneNumber">Nomor HP</label>
+                <InputGroup fullWidth>
+                  <input
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    type="number"
+                    placeholder="Nomor HP"
+                    value={values.phoneNumber}
+                    onChange={handleChange}
+                  />
+                </InputGroup>
+                <p style={{ color: 'red' }}>{errors.phoneNumber}</p>
               </div>
               <Button
                 status="Success"

@@ -16,6 +16,7 @@ export interface HospitalFormInterface {
   confirmPassword: string;
   latitude: number;
   longitude: number;
+  phoneNumber?: string;
 }
 
 export default function HospitalForm() {
@@ -29,6 +30,7 @@ export default function HospitalForm() {
     confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Password must match'),
     latitude: Yup.number().required('Latitude is required'),
     longitude: Yup.number().required('Email is required'),
+    phoneNumber: Yup.number(),
   });
 
   const submit = async (hospitalForm: HospitalFormInterface) => {
@@ -40,6 +42,9 @@ export default function HospitalForm() {
     form.append('username', hospitalForm.username);
     form.append('email', hospitalForm.email);
     form.append('password', hospitalForm.password);
+    form.append('latitude', hospitalForm.latitude.toString());
+    form.append('longitude', hospitalForm.longitude.toString());
+    form.append('phoneNumber', hospitalForm.phoneNumber ?? '');
     form.append('role', UserRole.Hospital);
 
     const fetchInitOpt: RequestInit = {
@@ -183,6 +188,20 @@ export default function HospitalForm() {
                   />
                 </InputGroup>
                 <p style={{ color: 'red' }}>{errors.longitude}</p>
+              </div>
+              <div style={{ marginBottom: 20 }}>
+                <label htmlFor="phoneNumber">Nomor HP</label>
+                <InputGroup fullWidth>
+                  <input
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    type="number"
+                    placeholder="Nomor HP"
+                    value={values.phoneNumber}
+                    onChange={handleChange}
+                  />
+                </InputGroup>
+                <p style={{ color: 'red' }}>{errors.phoneNumber}</p>
               </div>
               <Button
                 status="Success"

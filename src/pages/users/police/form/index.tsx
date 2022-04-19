@@ -16,6 +16,7 @@ export interface PoliceFormInterface {
   confirmPassword: string;
   latitude: number;
   longitude: number;
+  phoneNumber?: string;
 }
 
 export default function PoliceForm() {
@@ -29,6 +30,7 @@ export default function PoliceForm() {
     confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Password must match'),
     latitude: Yup.number().required('Latitude is required'),
     longitude: Yup.number().required('Email is required'),
+    phoneNumber: Yup.number(),
   });
 
   const submit = async (policeForm: PoliceFormInterface) => {
@@ -40,6 +42,9 @@ export default function PoliceForm() {
     form.append('username', policeForm.username);
     form.append('email', policeForm.email);
     form.append('password', policeForm.password);
+    form.append('latitude', policeForm.latitude.toString());
+    form.append('longitude', policeForm.longitude.toString());
+    form.append('phoneNumber', policeForm.phoneNumber ?? '');
     form.append('role', UserRole.Police);
 
     const fetchInitOpt: RequestInit = {
@@ -77,6 +82,7 @@ export default function PoliceForm() {
           confirmPassword: '',
           latitude: 0,
           longitude: 0,
+          phoneNumber: '',
         }}
         validationSchema={policeFormSchema}
         onSubmit={submit}
@@ -183,6 +189,20 @@ export default function PoliceForm() {
                   />
                 </InputGroup>
                 <p style={{ color: 'red' }}>{errors.longitude}</p>
+              </div>
+              <div style={{ marginBottom: 20 }}>
+                <label htmlFor="phoneNumber">Nomor HP</label>
+                <InputGroup fullWidth>
+                  <input
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    type="number"
+                    placeholder="Nomor HP"
+                    value={values.phoneNumber}
+                    onChange={handleChange}
+                  />
+                </InputGroup>
+                <p style={{ color: 'red' }}>{errors.phoneNumber}</p>
               </div>
               <Button
                 status="Success"
