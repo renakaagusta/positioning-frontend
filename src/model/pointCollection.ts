@@ -1,6 +1,6 @@
 export interface GeometryInterface {
   coordinates: Array<number>;
-  type: string;
+  type?: string;
 }
 
 export interface PropertyInterface {
@@ -10,8 +10,8 @@ export interface PropertyInterface {
 export interface PointInterface {
   id?: string;
   geometry: GeometryInterface;
-  properties: PropertyInterface;
-  type: string;
+  properties?: PropertyInterface;
+  type?: string;
 }
 
 export interface PointCollectionInterface {

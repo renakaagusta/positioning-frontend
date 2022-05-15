@@ -96,7 +96,7 @@ const TrafficJams = () => {
   } as Partial<any>;
 
   return (
-    <Layout title="TrafficJams">
+    <Layout title="Kemacetan">
       {isLoading && (
         <Col breakPoint={{ xs: 12 }}>
           <Card style={{ position: 'relative' }}>
@@ -106,7 +106,7 @@ const TrafficJams = () => {
         </Col>
       )}
       {!isLoading && (
-        <MUIDataTable title={'Daftar TrafficJam'} data={TrafficJamList} columns={columns} options={options} />
+        <MUIDataTable title={'Daftar Laporan Kemacetan'} data={TrafficJamList} columns={columns} options={options} />
       )}
     </Layout>
   );

@@ -8,29 +8,30 @@ import React, { useEffect, useState } from 'react';
 import { getDocs, query, where } from 'firebase/firestore';
 import { reportsCol } from 'constants/firebase';
 import { ReportInterface, ReportCategory } from 'model/report';
+import Link from 'next/link';
 
-const TrafficJams = () => {
-  const [TrafficJamList, setTrafficJamList] = useState<Array<ReportInterface>>([]);
+const Accidents = () => {
+  const [accidentList, setAccidentList] = useState<Array<ReportInterface>>([]);
   const [isLoading, setLoadingStatus] = useState<boolean>(false);
 
   useEffect(() => {
-    async function getTrafficJamList() {
+    async function getAccidentList() {
       setLoadingStatus(true);
 
-      const q = query(reportsCol, where('category', '==', ReportCategory.TrafficJam));
+      const q = query(reportsCol, where('category', '==', ReportCategory.Accident));
       const querySnapshot = await getDocs(q);
-      const TrafficJamListSnapshot: Array<ReportInterface> = [];
-      querySnapshot.docs.map((TrafficJam) => {
-        TrafficJamListSnapshot.push({
-          id: TrafficJam.id,
-          ...TrafficJam.data(),
+      const AccidentListSnapshot: Array<ReportInterface> = [];
+      querySnapshot.docs.map((Accident) => {
+        AccidentListSnapshot.push({
+          id: Accident.id,
+          ...Accident.data(),
         });
       });
-      setTrafficJamList(TrafficJamListSnapshot);
+      setAccidentList(AccidentListSnapshot);
       setLoadingStatus(false);
     }
 
-    getTrafficJamList();
+    getAccidentList();
   }, []);
 
   const columns = [
@@ -58,26 +59,11 @@ const TrafficJams = () => {
           return (
             <Row>
               <Col breakPoint={{ xs: 12, lg: 6 }}>
-                <Button
-                  status="Info"
-                  type="button"
-                  shape="SemiRound"
-                  fullWidth
-                  onClick={() => console.log(value, tableMeta)}
-                >
-                  Ubah
-                </Button>
-              </Col>
-              <Col breakPoint={{ xs: 12, lg: 6 }}>
-                <Button
-                  status="Danger"
-                  type="button"
-                  shape="SemiRound"
-                  fullWidth
-                  onClick={() => console.log(value, tableMeta)}
-                >
-                  Hapus
-                </Button>
+                <Link href={`accident/${accidentList[tableMeta.rowIndex].id}`}>
+                  <Button status="Info" type="button" shape="SemiRound" fullWidth>
+                    Lihat
+                  </Button>
+                </Link>
               </Col>
             </Row>
           );
@@ -96,7 +82,7 @@ const TrafficJams = () => {
   } as Partial<any>;
 
   return (
-    <Layout title="TrafficJams">
+    <Layout title="Kecelakaan">
       {isLoading && (
         <Col breakPoint={{ xs: 12 }}>
           <Card style={{ position: 'relative' }}>
@@ -106,13 +92,13 @@ const TrafficJams = () => {
         </Col>
       )}
       {!isLoading && (
-        <MUIDataTable title={'Daftar TrafficJam'} data={TrafficJamList} columns={columns} options={options} />
+        <MUIDataTable title={'Daftar Laporan Kecelakaan'} data={accidentList} columns={columns} options={options} />
       )}
     </Layout>
   );
 };
 
-export default TrafficJams;
+export default Accidents;
 
 class CustomToolbar extends React.Component {
   handleClick = () => {
