@@ -39,7 +39,7 @@ export default function PointCollectionForm() {
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:8000/point-collections/${id}`)
+      fetch(`https://positioning-backend.herokuapp.com/point-collections/${id}`)
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -92,7 +92,7 @@ export default function PointCollectionForm() {
       body: form,
     };
 
-    fetch(`http://localhost:8000/point-collections/${id}`, fetchInitOpt)
+    fetch(`https://positioning-backend.herokuapp.com/point-collections/${id}`, fetchInitOpt)
       .then((response) => response.json())
       .then((result: ApiResponseInterface) => {
         const { status, message } = result;

@@ -19,7 +19,7 @@ const Polices = () => {
     async function getPoliceList() {
       setLoadingStatus(true);
 
-      fetch('http://localhost:8000/users')
+      fetch('https://positioning-backend.herokuapp.com/users')
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -37,7 +37,7 @@ const Polices = () => {
   }, [reloadData]);
 
   const deletePolice = async (policeId: string) => {
-    fetch(`http://localhost:8000/users/${policeId}`, {
+    fetch(`https://positioning-backend.herokuapp.com/users/${policeId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -126,7 +126,6 @@ const Polices = () => {
   ];
 
   const options = {
-    filterType: 'checkbox',
     customToolbar: () => (
       <>
         <CustomToolbar />

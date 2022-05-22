@@ -9,7 +9,7 @@ import Layout from 'layouts';
 export default function Login() {
   return (
     <Layout title="Login">
-      <Form title="Login" subTitle="Positioning" position="center">
+      <Form title="Login" subTitle="Haffice" position="center">
         <form>
           <InputGroup fullWidth>
             <input type="email" placeholder="Email Address" />

@@ -56,7 +56,7 @@ export default function PointCollectionForm() {
       body: form,
     };
 
-    await fetch(`http://localhost:8000/point-collections`, fetchInitOpt)
+    await fetch(`https://positioning-backend.herokuapp.com/point-collections`, fetchInitOpt)
       .then((response) => response.json())
       .then((result: ApiResponseInterface) => {
         const { status, message } = result;

@@ -19,7 +19,7 @@ const Admins = () => {
     async function getAdminList() {
       setLoadingStatus(true);
 
-      fetch('http://localhost:8000/users')
+      fetch('https://positioning-backend.herokuapp.com/users')
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -37,7 +37,7 @@ const Admins = () => {
   }, [reloadData]);
 
   const deleteAdmin = async (adminId: string) => {
-    fetch(`http://localhost:8000/users/${adminId}`, {
+    fetch(`https://positioning-backend.herokuapp.com/users/${adminId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -126,7 +126,6 @@ const Admins = () => {
   ];
 
   const options = {
-    filterType: 'checkbox',
     customToolbar: () => (
       <>
         <CustomToolbar />
@@ -144,7 +143,7 @@ const Admins = () => {
           </Card>
         </Col>
       )}
-      {!isLoading && <MUIDataTable title={'Daftar Pengendara'} data={adminList} columns={columns} options={options} />}
+      {!isLoading && <MUIDataTable title={'Daftar Admin'} data={adminList} columns={columns} options={options} />}
     </Layout>
   );
 };

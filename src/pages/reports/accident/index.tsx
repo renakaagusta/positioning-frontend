@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, Col, Row, Spinner } from '@paljs/ui';
+import { Button, Card, CardBody, Col, EvaIcon, Row, Spinner } from '@paljs/ui';
 import Layout from 'layouts';
 import MUIDataTable from 'mui-datatables';
 import Tooltip from '@mui/material/Tooltip';
@@ -9,10 +9,38 @@ import { getDocs, query, where } from 'firebase/firestore';
 import { reportsCol } from 'constants/firebase';
 import { ReportInterface, ReportCategory } from 'model/report';
 import Link from 'next/link';
+import Swal from 'sweetalert2';
+import ApiResponseInterface, { StatusResponse } from 'model/api';
 
 const Accidents = () => {
   const [accidentList, setAccidentList] = useState<Array<ReportInterface>>([]);
   const [isLoading, setLoadingStatus] = useState<boolean>(false);
+  const [reloadData, setReloadData] = useState<number>(0);
+
+  const deleteReport = async (reportId: string) => {
+    fetch(`https://positioning-backend.herokuapp.com/reports/${reportId}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((result: ApiResponseInterface) => {
+        const { status, message } = result;
+
+        if (status != StatusResponse.Success) {
+          Swal.fire({
+            title: message,
+            icon: 'warning',
+          });
+          return;
+        }
+
+        Swal.fire({
+          title: 'Berhasil menghapus',
+          icon: 'success',
+        });
+
+        setReloadData(reloadData + 1);
+      });
+  };
 
   useEffect(() => {
     async function getAccidentList() {
@@ -32,7 +60,7 @@ const Accidents = () => {
     }
 
     getAccidentList();
-  }, []);
+  }, [reloadData]);
 
   const columns = [
     {
@@ -64,6 +92,29 @@ const Accidents = () => {
                     Lihat
                   </Button>
                 </Link>
+                <Button
+                  status="Danger"
+                  type="button"
+                  shape="SemiRound"
+                  fullWidth
+                  onClick={() =>
+                    Swal.fire({
+                      title: 'Apakah anda yakin menghapus?',
+                      showDenyButton: true,
+                      confirmButtonText: 'Ya',
+                      denyButtonText: `Tidak`,
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        deleteReport(accidentList[tableMeta.rowIndex].id!);
+                      }
+
+                      return;
+                    })
+                  }
+                >
+                  <EvaIcon name="trash" />
+                  Hapus
+                </Button>
               </Col>
             </Row>
           );
@@ -73,7 +124,6 @@ const Accidents = () => {
   ];
 
   const options = {
-    filterType: 'checkbox',
     customToolbar: () => (
       <>
         <CustomToolbar />

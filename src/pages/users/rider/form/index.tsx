@@ -43,7 +43,7 @@ export default function RiderForm() {
       body: form,
     };
 
-    await fetch(`http://localhost:8000/users`, fetchInitOpt)
+    await fetch(`https://positioning-backend.herokuapp.com/users`, fetchInitOpt)
       .then((response) => response.json())
       .then((result: ApiResponseInterface) => {
         const { status, message } = result;

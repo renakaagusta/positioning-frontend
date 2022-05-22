@@ -24,7 +24,7 @@ const PointCollections = () => {
     async function getPointCollectionList() {
       setLoadingStatus(true);
 
-      fetch('http://localhost:8000/point-collections')
+      fetch('https://positioning-backend.herokuapp.com/point-collections')
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -52,7 +52,7 @@ const PointCollections = () => {
   }, [reloadData]);
 
   const deletePointCollection = async (pointCollectionId: string) => {
-    fetch(`http://localhost:8000/point-collections/${pointCollectionId}`, {
+    fetch(`https://positioning-backend.herokuapp.com/point-collections/${pointCollectionId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -141,7 +141,6 @@ const PointCollections = () => {
   ];
 
   const options = {
-    filterType: 'checkbox',
     customToolbar: () => (
       <>
         <CustomToolbar />

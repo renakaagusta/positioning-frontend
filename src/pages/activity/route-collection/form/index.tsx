@@ -53,7 +53,7 @@ export default function RouteCollectionForm() {
       body: form,
     };
 
-    await fetch(`http://localhost:8000/route-collections`, fetchInitOpt)
+    await fetch(`https://positioning-backend.herokuapp.com/route-collections`, fetchInitOpt)
       .then((response) => response.json())
       .then((result: ApiResponseInterface) => {
         const { status, message } = result;

@@ -104,7 +104,7 @@ const Simulation = () => {
     async function getPointCollectionList() {
       setLoadingStatus(true);
 
-      fetch('http://localhost:8000/point-collections')
+      fetch('https://positioning-backend.herokuapp.com/point-collections')
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -116,7 +116,7 @@ const Simulation = () => {
           setPointCollectionList(data.pointCollections[0]);
         });
 
-      fetch('http://localhost:8000/reports/calculated-data')
+      fetch('https://positioning-backend.herokuapp.com/reports/calculated-data')
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -188,7 +188,7 @@ const Simulation = () => {
     if (reportId) {
       setLoadingStatus(true);
 
-      fetch(`http://localhost:8000/reports/${reportId}`)
+      fetch(`https://positioning-backend.herokuapp.com/reports/${reportId}`)
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -252,7 +252,7 @@ const Simulation = () => {
       body: form,
     };
 
-    fetch(`http://localhost:8000/reports`, fetchInitOpt)
+    fetch(`https://positioning-backend.herokuapp.com/reports`, fetchInitOpt)
       .then((response) => response.json())
       .then((result: ApiResponseInterface) => {
         const { status, message, data } = result;

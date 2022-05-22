@@ -19,7 +19,7 @@ const Hospitals = () => {
     async function getHospitalList() {
       setLoadingStatus(true);
 
-      fetch('http://localhost:8000/users')
+      fetch('https://positioning-backend.herokuapp.com/users')
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -37,7 +37,7 @@ const Hospitals = () => {
   }, [reloadData]);
 
   const deleteHospital = async (hospitalId: string) => {
-    fetch(`http://localhost:8000/users/${hospitalId}`, {
+    fetch(`https://positioning-backend.herokuapp.com/users/${hospitalId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -126,7 +126,6 @@ const Hospitals = () => {
   ];
 
   const options = {
-    filterType: 'checkbox',
     customToolbar: () => (
       <>
         <CustomToolbar />

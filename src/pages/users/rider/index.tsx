@@ -19,7 +19,7 @@ const Riders = () => {
     async function getRiderList() {
       setLoadingStatus(true);
 
-      fetch('http://localhost:8000/users')
+      fetch('https://positioning-backend.herokuapp.com/users')
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -37,7 +37,7 @@ const Riders = () => {
   }, [reloadData]);
 
   const deleteRider = async (riderId: string) => {
-    fetch(`http://localhost:8000/users/${riderId}`, {
+    fetch(`https://positioning-backend.herokuapp.com/users/${riderId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -126,7 +126,6 @@ const Riders = () => {
   ];
 
   const options = {
-    filterType: 'checkbox',
     customToolbar: () => (
       <>
         <CustomToolbar />

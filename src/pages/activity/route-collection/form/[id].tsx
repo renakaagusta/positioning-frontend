@@ -42,7 +42,7 @@ export default function RouteCollectionForm() {
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:8000/route-collections/${id}`)
+      fetch(`https://positioning-backend.herokuapp.com/route-collections/${id}`)
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -95,7 +95,7 @@ export default function RouteCollectionForm() {
       body: form,
     };
 
-    fetch(`http://localhost:8000/route-collections/${id}`, fetchInitOpt)
+    fetch(`https://positioning-backend.herokuapp.com/route-collections/${id}`, fetchInitOpt)
       .then((response) => response.json())
       .then((result: ApiResponseInterface) => {
         const { status, message } = result;

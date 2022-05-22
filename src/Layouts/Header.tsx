@@ -1,15 +1,14 @@
-import React from 'react';
+import { Actions } from '@paljs/ui/Actions';
+import { breakpointDown } from '@paljs/ui/breakpoints';
+import ContextMenu from '@paljs/ui/ContextMenu';
+import { EvaIcon } from '@paljs/ui/Icon';
+import { LayoutHeader } from '@paljs/ui/Layout';
+import Select from '@paljs/ui/Select';
+import User from '@paljs/ui/User';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React from 'react';
 import styled, { DefaultTheme } from 'styled-components';
-import Select from '@paljs/ui/Select';
-import { LayoutHeader } from '@paljs/ui/Layout';
-import { EvaIcon } from '@paljs/ui/Icon';
-import { Button } from '@paljs/ui/Button';
-import { Actions } from '@paljs/ui/Actions';
-import ContextMenu from '@paljs/ui/ContextMenu';
-import User from '@paljs/ui/User';
-import { breakpointDown } from '@paljs/ui/breakpoints';
 
 const HeaderStyle = styled.div`
   display: flex;
@@ -115,7 +114,7 @@ const Header: React.FC<HeaderProps> = (props) => {
             {
               content: (
                 <Link href="/">
-                  <a className="logo">Positioning</a>
+                  <a className="logo">Haffice</a>
                 </Link>
               ),
             },

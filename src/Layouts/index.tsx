@@ -94,7 +94,7 @@ const LayoutPage: React.FC<SEOProps> = ({ children, ...rest }) => {
                 <LayoutColumns>
                   <LayoutColumn className="main-content">{children}</LayoutColumn>
                 </LayoutColumns>
-                {!authLayout && <LayoutFooter>Positioning</LayoutFooter>}
+                {!authLayout && <LayoutFooter>Haffice</LayoutFooter>}
               </LayoutContent>
             </LayoutContainer>
           </Layout>

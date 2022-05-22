@@ -34,7 +34,7 @@ export default function Login() {
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:8000/users/${id}`)
+      fetch(`https://positioning-backend.herokuapp.com/users/${id}`)
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -79,7 +79,7 @@ export default function Login() {
       body: form,
     };
 
-    fetch(`http://localhost:8000/users/${id}`, fetchInitOpt)
+    fetch(`https://positioning-backend.herokuapp.com/users/${id}`, fetchInitOpt)
       .then((response) => response.json())
       .then((result: ApiResponseInterface) => {
         const { status, message } = result;

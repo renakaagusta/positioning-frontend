@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, Col, Row, Spinner } from '@paljs/ui';
+import { Button, Card, CardBody, Col, EvaIcon, Row, Spinner } from '@paljs/ui';
 import Layout from 'layouts';
 import MUIDataTable from 'mui-datatables';
 import Tooltip from '@mui/material/Tooltip';
@@ -8,10 +8,39 @@ import React, { useEffect, useState } from 'react';
 import { getDocs, query, where } from 'firebase/firestore';
 import { reportsCol } from 'constants/firebase';
 import { ReportInterface, ReportCategory } from 'model/report';
+import ApiResponseInterface, { StatusResponse } from 'model/api';
+import Swal from 'sweetalert2';
+import Link from 'next/link';
 
 const TrafficJams = () => {
-  const [TrafficJamList, setTrafficJamList] = useState<Array<ReportInterface>>([]);
+  const [trafficJamList, setTrafficJamList] = useState<Array<ReportInterface>>([]);
   const [isLoading, setLoadingStatus] = useState<boolean>(false);
+  const [reloadData, setReloadData] = useState<number>(0);
+
+  const deleteReport = async (reportId: string) => {
+    fetch(`https://positioning-backend.herokuapp.com/reports/${reportId}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((result: ApiResponseInterface) => {
+        const { status, message } = result;
+
+        if (status != StatusResponse.Success) {
+          Swal.fire({
+            title: message,
+            icon: 'warning',
+          });
+          return;
+        }
+
+        Swal.fire({
+          title: 'Berhasil menghapus',
+          icon: 'success',
+        });
+
+        setReloadData(reloadData + 1);
+      });
+  };
 
   useEffect(() => {
     async function getTrafficJamList() {
@@ -31,7 +60,7 @@ const TrafficJams = () => {
     }
 
     getTrafficJamList();
-  }, []);
+  }, [reloadData]);
 
   const columns = [
     {
@@ -58,24 +87,32 @@ const TrafficJams = () => {
           return (
             <Row>
               <Col breakPoint={{ xs: 12, lg: 6 }}>
-                <Button
-                  status="Info"
-                  type="button"
-                  shape="SemiRound"
-                  fullWidth
-                  onClick={() => console.log(value, tableMeta)}
-                >
-                  Ubah
-                </Button>
-              </Col>
-              <Col breakPoint={{ xs: 12, lg: 6 }}>
+                <Link href={`traffic-jam/${trafficJamList[tableMeta.rowIndex].id}`}>
+                  <Button status="Info" type="button" shape="SemiRound" fullWidth>
+                    Lihat
+                  </Button>
+                </Link>{' '}
                 <Button
                   status="Danger"
                   type="button"
                   shape="SemiRound"
                   fullWidth
-                  onClick={() => console.log(value, tableMeta)}
+                  onClick={() =>
+                    Swal.fire({
+                      title: 'Apakah anda yakin menghapus?',
+                      showDenyButton: true,
+                      confirmButtonText: 'Ya',
+                      denyButtonText: `Tidak`,
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        deleteReport(trafficJamList[tableMeta.rowIndex].id!);
+                      }
+
+                      return;
+                    })
+                  }
                 >
+                  <EvaIcon name="trash" />
                   Hapus
                 </Button>
               </Col>
@@ -87,7 +124,6 @@ const TrafficJams = () => {
   ];
 
   const options = {
-    filterType: 'checkbox',
     customToolbar: () => (
       <>
         <CustomToolbar />
@@ -106,7 +142,7 @@ const TrafficJams = () => {
         </Col>
       )}
       {!isLoading && (
-        <MUIDataTable title={'Daftar Laporan Kemacetan'} data={TrafficJamList} columns={columns} options={options} />
+        <MUIDataTable title={'Daftar Laporan Kemacetan'} data={trafficJamList} columns={columns} options={options} />
       )}
     </Layout>
   );

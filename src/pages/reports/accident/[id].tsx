@@ -3,13 +3,10 @@ import { GoogleMap, LoadScript, Polyline } from '@react-google-maps/api';
 import Layout from 'layouts';
 import ApiResponseInterface, { StatusResponse } from 'model/api';
 import { PositionInterface, ReportCategory, ReportInterface, ReportStatus, ReportType } from 'model/report';
-import { UserInterface, UserRole } from 'model/user';
-import FormLayout from 'components/Form';
+import { UserInterface } from 'model/user';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
-import { Report } from '@mui/icons-material';
-import { PointInterface } from 'model/pointCollection';
 
 export default function Accident() {
   const router = useRouter();
@@ -45,7 +42,7 @@ export default function Accident() {
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:8000/reports/${id}`)
+      fetch(`https://positioning-backend.herokuapp.com/reports/${id}`)
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -67,7 +64,7 @@ export default function Accident() {
     async function getHospitalList() {
       setLoadingStatus(true);
 
-      fetch('http://localhost:8000/users')
+      fetch('https://positioning-backend.herokuapp.com/users')
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -107,8 +104,8 @@ export default function Accident() {
     <Layout title="Detail Laporan Kemacetan">
       <Card>
         <CardBody>
-          <h1>Laporan Kecelakaan</h1>
-          <small>Detail laporan kecelakaan</small>
+          <h1>Laporan Kemcatean</h1>
+          <small>Detail laporan Kemacetan</small>
           <div style={{ height: '500px', maxWidth: '80vw', marginTop: 50 }}>
             <LoadScript googleMapsApiKey="AIzaSyAZx73zdc1lJUyFNnR3Wst_ucKT-QEaLhQ">
               <GoogleMap
@@ -134,13 +131,11 @@ export default function Accident() {
               </GoogleMap>
             </LoadScript>
           </div>
-          <FormLayout title="" position="left">
-            <div style={{ height: 120 }} />
+          <div>
+            <div style={{ height: 120, marginTop: 60 }} />
             <p style={{ fontWeight: 'bold' }}>Pengendara</p>
             <p>{rider?.username}</p>
             <p style={{ fontWeight: 'bold' }}>Rumah sakit</p>
-            <p>{hospital?.name}</p>
-            <p style={{ fontWeight: 'bold' }}>Jarak</p>
             <p>{hospital?.name}</p>
             <p style={{ fontWeight: 'bold' }}>Status laporan</p>
             <p>
@@ -150,7 +145,7 @@ export default function Accident() {
                 ? 'Dikonfirmasi'
                 : 'Ditolak'}
             </p>
-          </FormLayout>
+          </div>
         </CardBody>
       </Card>
     </Layout>

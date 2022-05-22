@@ -24,7 +24,7 @@ const RouteCollections = () => {
     async function getRouteCollectionList() {
       setLoadingStatus(true);
 
-      fetch('http://localhost:8000/route-collections')
+      fetch('https://positioning-backend.herokuapp.com/route-collections')
         .then((response) => response.json())
         .then((result: ApiResponseInterface) => {
           const { status, data, message } = result;
@@ -52,7 +52,7 @@ const RouteCollections = () => {
   }, [reloadData]);
 
   const deleteRouteCollection = async (routeCollectionId: string) => {
-    fetch(`http://localhost:8000/route-collections/${routeCollectionId}`, {
+    fetch(`https://positioning-backend.herokuapp.com/route-collections/${routeCollectionId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -141,7 +141,6 @@ const RouteCollections = () => {
   ];
 
   const options = {
-    filterType: 'checkbox',
     customToolbar: () => (
       <>
         <CustomToolbar />
