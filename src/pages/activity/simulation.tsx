@@ -165,7 +165,7 @@ const Simulation = () => {
       let distanceMarkerList: Array<MarkerInterface> = [];
 
       calculatedDataList.map((calculatedData: CalculatedDataInterface) => {
-        const startingPoint = pointCollection?.data.find(
+        /*const startingPoint = pointCollection?.data.find(
           (point: PointInterface) => point.properties.text == calculatedData.from,
         );
         const endPoint = pointCollection?.data.find(
@@ -177,7 +177,7 @@ const Simulation = () => {
           lat: (startingPoint!.geometry.coordinates[1] + endPoint!.geometry.coordinates[1]) / 2,
           lng: (startingPoint!.geometry.coordinates[0] + endPoint!.geometry.coordinates[0]) / 2,
           type: 'distance',
-        });
+        });*/
       });
 
       setMarkerList([...markerList, ...distanceMarkerList]);
