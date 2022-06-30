@@ -131,13 +131,13 @@ export default function PointCollectionForm() {
           return (
             <FormLayout title="Form Titik" subTitle="Formulir Titik" position="left">
               <div style={{ marginBottom: 20 }}>
-                <label htmlFor="type">Jenis</label>
+                <label htmlFor="type">Nama</label>
                 <InputGroup fullWidth>
                   <input
                     id="type"
                     name="type"
                     type="text"
-                    placeholder="Jenis"
+                    placeholder="Nama"
                     value={values.type}
                     onChange={handleChange}
                   />

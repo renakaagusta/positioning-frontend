@@ -101,11 +101,11 @@ export default function Accident() {
   }, [report, userList]);
 
   return (
-    <Layout title="Detail Laporan Kemacetan">
+    <Layout title="Detail Laporan Kecelakaan">
       <Card>
         <CardBody>
-          <h1>Laporan Kemcatean</h1>
-          <small>Detail laporan Kemacetan</small>
+          <h1>Laporan Kecelakaan</h1>
+          <small>Detail laporan Kecelakaan</small>
           <div style={{ height: '500px', maxWidth: '80vw', marginTop: 50 }}>
             <LoadScript googleMapsApiKey="AIzaSyAZx73zdc1lJUyFNnR3Wst_ucKT-QEaLhQ">
               <GoogleMap
