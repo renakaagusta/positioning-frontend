@@ -5,7 +5,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-import Auth from 'components/Auth';
 import Layout from 'layouts';
 
 const Input = styled(InputGroup)`
@@ -15,7 +14,6 @@ const Input = styled(InputGroup)`
 export default function Register() {
   return (
     <Layout title="Register">
-      <Auth title="Registrasi">
         <form>
           <Input fullWidth>
             <input type="text" placeholder="Username" />
@@ -39,7 +37,6 @@ export default function Register() {
             <a>Log In</a>
           </Link>
         </p>
-      </Auth>
     </Layout>
   );
 }
