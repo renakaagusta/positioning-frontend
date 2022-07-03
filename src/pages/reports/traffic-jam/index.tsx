@@ -1,5 +1,5 @@
 import { Button, Card, CardBody, Col, EvaIcon, Row, Spinner } from '@paljs/ui';
-import Layout from 'layouts';
+import Layout from '../../../layouts';
 import MUIDataTable from 'mui-datatables';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';

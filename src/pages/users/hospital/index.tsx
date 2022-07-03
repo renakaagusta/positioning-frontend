@@ -6,7 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Swal from 'sweetalert2';
-import Layout from 'layouts';
+import Layout from '../../../layouts';
 import { UserInterface, UserRole } from 'model/user';
 import ApiResponseInterface, { StatusResponse } from 'model/api';
 

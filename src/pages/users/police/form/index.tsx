@@ -72,7 +72,7 @@ export default function PoliceForm() {
   };
 
   return (
-    <Layout title="Form Rumah Sakit">
+    <Layout title="Form Kantor Polisi">
       <Formik
         initialValues={{
           name: '',
@@ -91,7 +91,7 @@ export default function PoliceForm() {
         {(formik) => {
           const { submitForm, handleChange, errors, values } = formik;
           return (
-            <FormLayout title="Form Rumah Sakit" subTitle="Formulir Rumah Sakit" position="left">
+            <FormLayout title="Form Kantor Polisi" subTitle="Formulir Kantor Polisi" position="left">
               <div style={{ marginBottom: 20 }}>
                 <label htmlFor="name">Nama</label>
                 <InputGroup fullWidth>

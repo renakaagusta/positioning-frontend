@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import Form from 'components/Form';
-import Layout from 'layouts';
+import Layout from '../../layouts';
 
 export default function Login() {
   return (

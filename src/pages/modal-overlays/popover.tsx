@@ -8,7 +8,7 @@ import { Card, CardBody } from '@paljs/ui/Card';
 import { Button } from '@paljs/ui/Button';
 import Link from 'next/link';
 
-import Layout from 'layouts';
+import Layout from '../../layouts';
 import { useRouter } from 'next/router';
 
 export default function PopoverPage() {

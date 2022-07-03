@@ -5,7 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-import Layout from 'layouts';
+import Layout from '../../layouts';
 
 const Input = styled(InputGroup)`
   margin-bottom: 2rem;

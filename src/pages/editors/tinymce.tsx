@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import { Card, CardBody } from '@paljs/ui/Card';
-import Layout from 'layouts';
+import Layout from '../../layouts';
 import { Editor } from '@tinymce/tinymce-react';
 
 export default function TinyMCE() {

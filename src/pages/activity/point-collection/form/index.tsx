@@ -5,7 +5,7 @@ import { Formik, FieldArray, getIn, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 import FormLayout from 'components/Form';
-import Layout from 'layouts';
+import Layout from '../../../../layouts';
 import ApiResponseInterface, { StatusResponse } from 'model/api';
 import { Col, EvaIcon, Row } from '@paljs/ui';
 export interface LocationInterface {

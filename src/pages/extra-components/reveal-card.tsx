@@ -3,7 +3,7 @@ import RevealCard from '@paljs/ui/RevealCard';
 import Row from '@paljs/ui/Row';
 import Col from '@paljs/ui/Col';
 import React from 'react';
-import Layout from 'layouts';
+import Layout from '../../layouts';
 
 export default function RevealCards() {
   return (

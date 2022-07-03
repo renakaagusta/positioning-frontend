@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Layout from 'layouts';
+import Layout from '../layouts';
 import { Card, CardBody } from '@paljs/ui/Card';
 import { Col, Row } from '@paljs/ui';
 import { ReportCategory, ReportInterface } from 'model/report';

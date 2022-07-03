@@ -3,7 +3,7 @@ import { Card, CardBody } from '@paljs/ui/Card';
 import Row from '@paljs/ui/Row';
 import Col from '@paljs/ui/Col';
 import React, { useState } from 'react';
-import Layout from 'layouts';
+import Layout from '../../layouts';
 
 export default function SearchPage() {
   const [value, setValue] = useState('');

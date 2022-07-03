@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 import FormLayout from 'components/Form';
 import { useRouter } from 'next/router';
-import Layout from 'layouts';
+import Layout from '../../../../layouts';
 import { PointCollectionInterface } from 'model/pointCollection';
 import ApiResponseInterface, { StatusResponse } from 'model/api';
 import { LocationInterface, PointCollectionFormInterface } from '.';

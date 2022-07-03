@@ -1,6 +1,6 @@
 import { Button, Card, CardBody, InputGroup, Position } from '@paljs/ui';
 import { GoogleMap, LoadScript, Marker, Polyline } from '@react-google-maps/api';
-import Layout from 'layouts';
+import Layout from '../../layouts';
 import ApiResponseInterface, { StatusResponse } from 'model/api';
 import * as Yup from 'yup';
 import { PointCollectionInterface, PointInterface } from 'model/pointCollection';

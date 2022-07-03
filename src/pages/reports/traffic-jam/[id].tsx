@@ -1,7 +1,7 @@
 import { Card, CardBody } from '@paljs/ui';
 import { GoogleMap, LoadScript, Polyline } from '@react-google-maps/api';
 import FormLayout from 'components/Form';
-import Layout from 'layouts';
+import Layout from '../../../layouts';
 import ApiResponseInterface, { StatusResponse } from 'model/api';
 import { PositionInterface, ReportCategory, ReportInterface, ReportStatus, ReportType } from 'model/report';
 import { UserInterface } from 'model/user';

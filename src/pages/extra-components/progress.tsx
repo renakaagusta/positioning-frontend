@@ -6,7 +6,7 @@ import Row from '@paljs/ui/Row';
 import Col from '@paljs/ui/Col';
 import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
-import Layout from 'layouts';
+import Layout from '../../layouts';
 
 const Container = styled.div`
   display: flex;

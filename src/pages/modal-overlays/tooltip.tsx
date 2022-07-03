@@ -4,7 +4,7 @@ import Tooltip from '@paljs/ui/Tooltip';
 import { Card, CardBody } from '@paljs/ui/Card';
 import { Button } from '@paljs/ui/Button';
 import React from 'react';
-import Layout from 'layouts';
+import Layout from '../../layouts';
 
 export default function TooltipPage() {
   return (

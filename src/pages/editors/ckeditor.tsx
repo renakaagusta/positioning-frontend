@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardBody } from '@paljs/ui/Card';
-import Layout from 'layouts';
+import Layout from '../../layouts';
 
 const isSSR = typeof window === 'undefined';
 const CKEditor = !isSSR ? require('@ckeditor/ckeditor5-react') : <div />;
