@@ -4,7 +4,7 @@ import { ButtonLink } from '@paljs/ui/Button';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
-import Layout from 'layouts';
+import Layout from '../layouts';
 
 export const ErrorStyle = styled.div`
   width: 100%;

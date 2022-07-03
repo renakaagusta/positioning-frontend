@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 import FormLayout from 'components/Form';
-import Layout from 'layouts';
+import Layout from '../../../../layouts';
 import { UserRole } from 'model/user';
 import ApiResponseInterface, { StatusResponse } from 'model/api';
 export interface PoliceFormInterface {
