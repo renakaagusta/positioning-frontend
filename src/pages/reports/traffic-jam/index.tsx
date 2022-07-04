@@ -50,9 +50,9 @@ const TrafficJams = () => {
       const querySnapshot = await getDocs(q);
       const TrafficJamListSnapshot: Array<ReportInterface> = [];
       querySnapshot.docs.map((TrafficJam) => {
-        TrafficJamListSnapshot.push({
+        TrafficJamListSnapshot.push({...TrafficJam.data(),
           id: TrafficJam.id,
-          ...TrafficJam.data(),
+          createdAt: new Date(TrafficJam.data()['createdAt']['seconds'] * 1000).toLocaleString(),
         });
       });
       setTrafficJamList(TrafficJamListSnapshot);
@@ -72,8 +72,16 @@ const TrafficJams = () => {
       },
     },
     {
-      name: 'description',
-      label: 'Deskripsi',
+      name: 'status',
+      label: 'Status',
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: 'createdAt',
+      label: 'Waktu',
       options: {
         filter: true,
         sort: false,

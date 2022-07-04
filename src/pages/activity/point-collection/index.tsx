@@ -159,7 +159,7 @@ const PointCollections = () => {
         </Col>
       )}
       {!isLoading && (
-        <MUIDataTable title={'Daftar Pengendara'} data={pointCollectionList} columns={columns} options={options} />
+        <MUIDataTable title={'Daftar Titik'} data={pointCollectionList} columns={columns} options={options} />
       )}
     </Layout>
   );

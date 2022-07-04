@@ -50,9 +50,9 @@ const Accidents = () => {
       const querySnapshot = await getDocs(q);
       const AccidentListSnapshot: Array<ReportInterface> = [];
       querySnapshot.docs.map((Accident) => {
-        AccidentListSnapshot.push({
+        AccidentListSnapshot.push({...Accident.data(),
           id: Accident.id,
-          ...Accident.data(),
+          createdAt: new Date(Accident.data()['createdAt']['seconds'] * 1000).toLocaleString(),
         });
       });
       setAccidentList(AccidentListSnapshot);
@@ -72,8 +72,16 @@ const Accidents = () => {
       },
     },
     {
-      name: 'description',
-      label: 'Deskripsi',
+      name: 'status',
+      label: 'Status',
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: 'createdAt',
+      label: 'Waktu',
       options: {
         filter: true,
         sort: false,

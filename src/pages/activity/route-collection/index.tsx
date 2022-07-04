@@ -159,7 +159,7 @@ const RouteCollections = () => {
         </Col>
       )}
       {!isLoading && (
-        <MUIDataTable title={'Daftar Pengendara'} data={routeCollectionList} columns={columns} options={options} />
+        <MUIDataTable title={'Daftar Rute'} data={routeCollectionList} columns={columns} options={options} />
       )}
     </Layout>
   );

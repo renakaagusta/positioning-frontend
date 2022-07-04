@@ -144,7 +144,7 @@ const Polices = () => {
         </Col>
       )}
       {!isLoading && (
-        <MUIDataTable title={'Daftar Rumah Sakit'} data={policeList} columns={columns} options={options} />
+        <MUIDataTable title={'Daftar Kantor Polisi'} data={policeList} columns={columns} options={options} />
       )}
     </Layout>
   );

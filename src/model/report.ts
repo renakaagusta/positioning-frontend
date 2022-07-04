@@ -33,5 +33,5 @@ export interface ReportInterface {
   routes?: Array<PositionInterface>;
   type: ReportType;
   rejectedBy?: Array<string>;
-  createdAt: Date;
+  createdAt: any;
 }
